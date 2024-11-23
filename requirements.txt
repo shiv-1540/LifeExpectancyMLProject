@@ -1,0 +1,14 @@
+blinker
+click
+colorama
+flask
+importlib-metadata
+itsdangerous
+Jinja2
+MarkupSafe
+Werkzeug
+zipp
+gunicorn
+scikit-learn
+numpy
+pandas

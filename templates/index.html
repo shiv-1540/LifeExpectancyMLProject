@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Life Expectancy Prediction</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Pacifico"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Arimo"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Hind:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <style>
+      /* Styling the login container */
+      .login {
+        width: 300px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        background-color: #f5f5f5;
+      }
+
+      /* Styling the form inputs */
+      .login input[type="number"],
+      .login button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      /* Styling the form labels */
+      .login p {
+        margin: 0;
+        font-size: 14px;
+        color: #333;
+      }
+
+      /* Styling the form submit button */
+      .login button {
+        background-color: #4caf50;
+        color: white;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+      }
+
+      /* Styling the form submit button on hover */
+      .login button:hover {
+        background-color: #45a049;
+      }
+
+      /* Styling the form title */
+      .login h1 {
+        font-family: "Pacifico", cursive;
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      /* Styling the small text */
+      .login small {
+        font-family: "Arimo", sans-serif;
+        font-size: 12px;
+        color: #666;
+      }
+
+      /* Styling the error messages */
+      .error {
+        color: red;
+        font-size: 12px;
+        margin-top: 5px;
+      }
+
+      .error-section {
+        background-color: #f8d7da;
+        color: red;
+        padding: 10px;
+        margin-top: 20px;
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login">
+      <h1><strong>Life Expectancy Prediction</strong></h1>
+      <!-- Main Input For Receiving Query to our ML -->
+      <form action="/predict" method="POST">
+        <p style="text-align: left">
+          <small><b>Year [ Between 1980 to 2005 ]</b></small>
+        </p>
+        <input
+          type="number"
+          placeholder="Enter Year"
+          name="year"
+          required="required"
+        />
+        <p style="text-align: left">
+          <small><b>Status [ Either 0 or 1 ]</b></small>
+        </p>
+        <input
+          type="number"
+          placeholder="Enter Status"
+          name="status"
+          required="required"
+        />
+        <p style="text-align: left">
+          <small><b>Adult Mortality [ Between 0 to 2000 ]</b></small>
+        </p>
+        <input
+          type="number"
+          placeholder="Enter Adult Mortality"
+          name="adult_mortality"
+          required="required"
+        />
+        <p style="text-align: left">
+          <small><b>Alcohol [ Between 0 to 20 ]</b></small>
+        </p>
+        <input
+          type="number"
+          step="any"
+          placeholder="Enter Alcohol"
+          name="alcohol"
+          required="required"
+        />
+        <p style="text-align: left">
+          <small><b>Hepatitis B [ Between 0 to 100 ]</b></small>
+        </p>
+        <input
+          type="number"
+          placeholder="Enter Hepatitis B"
+          name="hepatitis_b"
+          required="required"
+        />
+        <p style="text-align: left">
+          <small><b>Measles [ Between 0 to 100000 ]</b></small>
+        </p>
+        <input
+          type="number"
+          placeholder="Enter Measles"
+          name="measles"
+          required="required"
+        />
+        <p style="text-align: left">
+          <small><b>BMI [ Between 0 to 100 ]</b></small>
+        </p>
+        <input
+          type="number"
+          step="any"
+          placeholder="Enter BMI"
+          name="bmi"
+          required="required"
+        />
+        <p style="text-align: left">
+          <small><b>Under-Five Deaths [ Between 0 to 1000 ]</b></small>
+        </p>
+        <input
+          type="number"
+          placeholder="Enter Under-Five Deaths"
+          name="under_five_deaths"
+          required="required"
+        />
+        <p style="text-align: left">
+          <small><b>Polio [ Between 0 to 100 ]</b></small>
+        </p>
+        <input
+          type="number"
+          placeholder="Enter Polio"
+          name="polio"
+          required="required"
+        />
+        <p style="text-align: left">
+          <small><b>Total Expenditure [ Between 0 to 20 ]</b></small>
+        </p>
+        <input
+          type="number"
+          step="any"
+          placeholder="Enter Total Expenditure"
+          name="total_expenditure"
+          required="required"
+        />
+        <p style="text-align: left">
+          <small><b>Diphtheria [ Between 0 to 100 ]</b></small>
+        </p>
+        <input
+          type="number"
+          placeholder="Enter Diphtheria"
+          name="diphtheria"
+          required="required"
+        />
+        <p style="text-align: left">
+          <small><b>HIV/AIDS [ Between 0 to 50 ]</b></small>
+        </p>
+        <input
+          type="number"
+          step="any"
+          placeholder="Enter HIV/AIDS"
+          name="hiv_aids"
+          required="required"
+        />
+        <p style="text-align: left">
+          <small><b>GDP [ Between 0 to 50000 ]</b></small>
+        </p>
+        <input
+          type="number"
+          step="any"
+          placeholder="Enter GDP"
+          name="gdp"
+          required="required"
+        />
+        <p style="text-align: left">
+          <small><b>Population [ Between 0 to 1,00,00,00,000 ]</b></small>
+        </p>
+        <input
+          type="number"
+          placeholder="Enter Population"
+          name="population"
+          required="required"
+        />
+        <p style="text-align: left">
+          <small><b>Thinness 1-19 Years [ Between 0 to 50 ]</b></small>
+        </p>
+        <input
+          type="number"
+          step="any"
+          placeholder="Enter Thinness 1-19 Years"
+          name="thinness_1_19_years"
+          required="required"
+        />
+        <p style="text-align: left">
+          <small
+            ><b>Income Composition of Resources [ Between 0 to 1 ]</b></small
+          >
+        </p>
+        <input
+          type="number"
+          step="any"
+          placeholder="Enter Income Composition of Resources"
+          name="income_composition"
+          required="required"
+        />
+        <p style="text-align: left">
+          <small><b>Schooling [ Between 0 to 20 ]</b></small>
+        </p>
+        <input
+          type="number"
+          step="any"
+          placeholder="Enter Schooling"
+          name="schooling"
+          required="required"
+        />
+
+        {% if errors %}
+        <div class="error-section">
+          <h2>Error:</h2>
+          <ul>
+            {% for error in errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">
+          Predict
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

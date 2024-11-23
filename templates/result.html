@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Amaranth"
+      rel="stylesheet"
+    />
+    <title>Result</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .con {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .results {
+        font-size: 50px;
+        color: black;
+        font-family: "Amaranth";
+      }
+
+      .prediction {
+        color: black;
+      }
+
+      .poor {
+        color: green;
+      }
+
+      .satisfactory {
+        color: yellow;
+      }
+
+      .moderate {
+        color: orange;
+      }
+
+      .great {
+        color: red;
+      }
+
+      .amazing {
+        color: darkred;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="con">
+      <div class="results">
+        {% set prediction = prediction|int %}
+        <h4>
+          Prediction: The Estimated Life Expectancy is
+          <span class="prediction">{{ prediction|float }} </span>
+        </h4>
+
+        {% if prediction >= 0 and prediction <= 55 %}
+        <h4>
+          Prediction: The Estimated Life Expectancy is
+          <span class="poor">Poor</span>
+        </h4>
+        {% elif prediction >= 56 and prediction <= 70 %}
+        <h4>
+          Prediction: The Estimated Life Expectancy is
+          <span class="moderate">Moderate</span>
+        </h4>
+        {% elif prediction >= 71 and prediction <= 80 %}
+        <h4>
+          Prediction: The Estimated Life Expectancy is
+          <span class="satisfactory">Satisfactory</span>
+        </h4>
+        {% elif prediction >= 81 and prediction <= 90 %}
+        <h4>
+          Prediction: The Estimated Life Expectancy is
+          <span class="great">Great</span>
+        </h4>
+        {% else %}
+        <h4>
+          Prediction: The Estimated Life Expectancy is
+          <span class="amazing">Amazing</span>
+        </h4>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>

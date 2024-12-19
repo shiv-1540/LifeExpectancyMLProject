@@ -7,9 +7,9 @@ app = Flask(__name__)
 
 def load_model():
     try:
-        file_path = os.path.join(os.getcwd(), 'model.pkl')
+        file_path = os.path.join(os.getcwd(), 'final_model.pkl')
         print(f"Attempting to load model from {file_path}")
-        with open('model.pkl', 'rb') as file:
+        with open('final_model.pkl', 'rb') as file:
             model = pickle.load(file)
         return model
     except FileNotFoundError as e:
@@ -22,21 +22,10 @@ model = load_model()
 
 def validate_input(data):
     ranges = {
-        'Year': (1980, 2025),
-        'Status': (0, 1),
-        'Alcohol': (0, 20),
-        'Adult Mortality': (0, 2000),
-        'Hepatitis B': (0, 100),
-        'Measles': (0, 100000),
+        'Adult Mortality': (0, 1000),
         'BMI': (0, 100),
-        'under-five deaths': (0, 1000),
-        'Polio': (0, 100),
-        'Total expenditure': (0, 20),
-        'Diphtheria': (0, 100),
         'HIV/AIDS': (0, 50),
-        'GDP': (0, 50000),
         'Population': (0, 1000000000),
-        'thinness 1-19 years': (0, 50),
         'Income composition of resources': (0, 1),
         'Schooling': (0, 20)
     }
@@ -57,41 +46,17 @@ def home():
 @app.route('/predict', methods=['GET', 'POST'])
 def predict():
     if request.method == 'POST':
-        year = int(request.form['year'])
-        status = int(request.form['status'])
-        alcohol = float(request.form['alcohol'])
         adult_mortality = float(request.form['adult_mortality'])
-        hepatitis_b = float(request.form['hepatitis_b'])
-        measles = int(request.form['measles'])
         bmi = float(request.form['bmi'])
-        under_five_deaths = int(request.form['under_five_deaths'])
-        polio = float(request.form['polio'])
-        total_expenditure = float(request.form['total_expenditure'])
-        diphtheria = float(request.form['diphtheria'])
         hiv_aids = float(request.form['hiv_aids'])
-        gdp = float(request.form['gdp'])
-        population = float(request.form['population'])
-        thinness_1_19_years = float(request.form['thinness_1_19_years'])
         income_composition = float(request.form['income_composition'])
         schooling = float(request.form['schooling'])
 
         # Prepare the input data for prediction
         input_data = {
-            'Year': year,
-            'Status': status,
-            'Alcohol': alcohol,
             'Adult Mortality': adult_mortality,
-            'Hepatitis B': hepatitis_b,
-            'Measles': measles,
             'BMI': bmi,
-            'under-five deaths': under_five_deaths,
-            'Polio': polio,
-            'Total expenditure': total_expenditure,
-            'Diphtheria': diphtheria,
             'HIV/AIDS': hiv_aids,
-            'GDP': gdp,
-            'Population': population,
-            'thinness 1-19 years': thinness_1_19_years,
             'Income composition of resources': income_composition,
             'Schooling': schooling
         }
@@ -119,5 +84,6 @@ def result():
     prediction = request.args.get('prediction')
     return render_template('result.html', prediction=prediction)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)

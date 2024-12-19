@@ -6,90 +6,122 @@
       href="https://fonts.googleapis.com/css?family=Amaranth"
       rel="stylesheet"
     />
-    <title>Result</title>
+    <title>Life Expectancy Result</title>
     <style>
       body {
         margin: 0;
         padding: 0;
+        font-family: 'Amaranth', sans-serif;
+        background: linear-gradient(120deg, #1f2e5a, #507e90);
+        color: #ffffff;
       }
 
       .con {
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-        width: 100vw;
+        height: 90vh;
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      #navbar {
+        background: #1e293b;
+        padding: 10px;
+        border-bottom: 4px solid #09101c;
+        color: white;
+        text-align: center;
       }
 
       .results {
-        font-size: 50px;
-        color: black;
-        font-family: "Amaranth";
+        font-size: 2rem;
+        margin-top: 20px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
       }
 
       .prediction {
-        color: black;
+        font-size: 3rem;
+        font-weight: bold;
+        color: #f7c948;
       }
 
       .poor {
-        color: green;
-      }
-
-      .satisfactory {
-        color: yellow;
+        color: #ff4d4d;
       }
 
       .moderate {
-        color: orange;
+        color: #ffa726;
+      }
+
+      .satisfactory {
+        color: #ffeb3b;
       }
 
       .great {
-        color: red;
+        color: #66bb6a;
       }
 
       .amazing {
-        color: darkred;
+        color: #29b6f6;
+      }
+
+      .result-image {
+        margin-top: 20px;
+        width: 300px;
+        height: auto;
+        border: 2px solid #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
       }
     </style>
   </head>
 
   <body>
+    <div id="navbar">
+      <h1><strong>Life Expectancy Prediction</strong></h1>
+    </div>
+
     <div class="con">
       <div class="results">
         {% set prediction = prediction|int %}
         <h4>
-          Prediction: The Estimated Life Expectancy is
-          <span class="prediction">{{ prediction|float }} </span>
+          The Estimated Life Expectancy is
+          <span class="prediction">{{ prediction|float }}</span>
         </h4>
 
         {% if prediction >= 0 and prediction <= 55 %}
         <h4>
-          Prediction: The Estimated Life Expectancy is
+          The Life Expectancy is categorized as
           <span class="poor">Poor</span>
         </h4>
+        <img src="../static/imgs/poor.jpg" alt="Poor Condition" class="result-image" />
         {% elif prediction >= 56 and prediction <= 70 %}
         <h4>
-          Prediction: The Estimated Life Expectancy is
+          The Life Expectancy is categorized as
           <span class="moderate">Moderate</span>
         </h4>
+        <img src="../static/imgs/moderate.jpg" alt="Moderate Condition" class="result-image" />
         {% elif prediction >= 71 and prediction <= 80 %}
         <h4>
-          Prediction: The Estimated Life Expectancy is
+          The Life Expectancy is categorized as
           <span class="satisfactory">Satisfactory</span>
         </h4>
+        <img src="../static/imgs/satisfactory.jpg" alt="Satisfactory Condition" class="result-image" />
         {% elif prediction >= 81 and prediction <= 90 %}
         <h4>
-          Prediction: The Estimated Life Expectancy is
+          The Life Expectancy is categorized as
           <span class="great">Great</span>
         </h4>
+        <img src="../static/imgs/great.jpg" alt="Great Condition" class="result-image" />
         {% else %}
         <h4>
-          Prediction: The Estimated Life Expectancy is
+          The Life Expectancy is categorized as
           <span class="amazing">Amazing</span>
         </h4>
+        <img src="../static/imgs/amazing.jpg" alt="Amazing Condition" class="result-image" />
         {% endif %}
       </div>
     </div>

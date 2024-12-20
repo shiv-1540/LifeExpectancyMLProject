@@ -67,13 +67,6 @@ A machine learning project to predict life expectancy based on various health an
 ---
 
 
-## Results
-### Predicted vs Actual Life Expectancy
-![Prediction Results](https://github.com/user-attachments/assets/d91126a4-1db5-4d54-acf2-0d0475492183)
-
-### Feature Importance
-![Feature Importance Analysis](https://github.com/user-attachments/assets/ed1a9a72-47e1-42cf-bfba-ea365899dc85)
-
 
 
 ## Model Evaluation:

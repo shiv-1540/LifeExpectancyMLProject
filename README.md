@@ -40,6 +40,8 @@ Linear Regression
 Decision Trees
 Random Forest
 Gradient Boosting (XGBoost)
+
+
 Evaluation:
 
 Mean Absolute Error (MAE)
@@ -51,6 +53,11 @@ Python: Primary programming language.
 Scikit-learn: Model development and evaluation.
 Pandas: Data manipulation and preprocessing.
 Matplotlib and Seaborn: Visualization of features and results.
+
+## Model Evaluation:
+![WhatsApp Image 2024-12-19 at 23 52 19_d44e6590](https://github.com/user-attachments/assets/6ca3bee8-0b79-428b-bacf-c7a2213f466d)
+![image](https://github.com/user-attachments/assets/fd7750cb-ba7f-4402-8c5d-0f2adfb8691f)
+
 
 ## Result :
 ![WhatsApp Image 2024-12-19 at 19 24 03_32417f47](https://github.com/user-attachments/assets/d91126a4-1db5-4d54-acf2-0d0475492183)
